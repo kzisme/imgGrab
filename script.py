@@ -21,18 +21,22 @@ else:
         prev_imgs = prev_imgs.split("\n")
         prev_imgs = filter(None, prev_imgs)
 
+links = []
 subreddit = r.get_subreddit('pics')
 for submission in subreddit.get_top(limit = 25):
 
     if submission.id not in prev_imgs:
         #Download images...
-        links = [submission.url]
-       # print "Domain: ",  submission.url
-        print links 
-        
+        #print "Domain: ",  submission.url
+        links.append(submission.url)
+        #print links
 
 
         prev_imgs.append(submission.id)
+        
+print links[2]
+
+
 
 with open("prev_imgs.txt", "a") as f:
     for post_id in prev_imgs:
