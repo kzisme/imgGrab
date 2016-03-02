@@ -26,8 +26,9 @@ for submission in subreddit.get_top(limit = 25):
 
     if submission.id not in prev_imgs:
         #Download images...
-        print "Domain: ",  submission.url
-        
+        links = [submission.url]
+       # print "Domain: ",  submission.url
+        print links 
         
 
 
