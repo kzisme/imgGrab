@@ -1,2 +1,4 @@
 script_config.py
 script_config.pyc
+.DS_Store
+*.jpeg

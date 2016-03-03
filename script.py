@@ -30,16 +30,16 @@ for submission in subreddit.get_top(limit = 25):
         links.append(submission.url)
         prev_imgs.append(submission.id)
 
-for link in links:
+i = 0
+while os.path.exists('image%s.jpeg' % i):
+    i += 1
+    for link in links:
     
-    req = requests.get(submission.url, stream = True)
-    i = 0
-    with open('image%s.jpeg' % i, 'wb') as f:
-        f.write(req.content)
+        req = requests.get(submission.url, stream = True)
+        with open('image%s.jpeg' % i, 'wb') as f:
+            f.write(req.content)
 
 
-    while os.path.exists('image%s.jpeg' % i):
-        i += 1
 
 with open("prev_imgs.txt", "a") as f:
     for post_id in prev_imgs:
