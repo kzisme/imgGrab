@@ -26,7 +26,8 @@ for submission in subreddit.get_top(limit = 25):
 
     if submission.id not in prev_imgs:
         #Download images...
-        print "Links: ",  submission.url
+        print "Links to be downloaded..."
+        print submission.url
         links.append(submission.url)
         prev_imgs.append(submission.id)
 
@@ -36,7 +37,7 @@ while os.path.exists('image%s.jpeg' % i):
 
 for link in links:
     
-        req = requests.get(submission.url, stream = True)
+        req = requests.get(link, stream = True)
         with open('image%s.jpeg' % i, 'wb') as f:
             i += 1
             f.write(req.content)
