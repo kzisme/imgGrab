@@ -19,7 +19,6 @@ else:
     with open("prev_imgs.txt", "r") as f:
         prev_imgs = f.read()
         prev_imgs = prev_imgs.split("\n")
-        prev_imgs = filter(None, prev_imgs)
 
 links = []
 subreddit = r.get_subreddit('pics')
@@ -27,16 +26,20 @@ for submission in subreddit.get_top(limit = 25):
 
     if submission.id not in prev_imgs:
         #Download images...
-        #print "Domain: ",  submission.url
+        print "Links: ",  submission.url
         links.append(submission.url)
-        #print links
-
-
         prev_imgs.append(submission.id)
-        
-print links[2]
+
+for link in links:
+    
+    req = requests.get(submission.url, stream = True)
+    i = 0
+    with open('image%s.jpeg' % i, 'wb') as f:
+        f.write(req.content)
 
 
+    while os.path.exists('image%s.jpeg' % i):
+        i += 1
 
 with open("prev_imgs.txt", "a") as f:
     for post_id in prev_imgs:
