@@ -33,10 +33,12 @@ for submission in subreddit.get_top(limit = 25):
 i = 0
 while os.path.exists('image%s.jpeg' % i):
     i += 1
-    for link in links:
+
+for link in links:
     
         req = requests.get(submission.url, stream = True)
         with open('image%s.jpeg' % i, 'wb') as f:
+            i += 1
             f.write(req.content)
 
 
