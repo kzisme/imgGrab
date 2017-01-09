@@ -24,7 +24,7 @@ links = []
 subreddit = r.get_subreddit('pics')
 for submission in subreddit.get_top(limit = 25):
 # Getting Username to add to mkdir
-newDirName = post.author.name
+    newDirName = post.author.name
 
     if submission.id not in prev_imgs:
         #Download images...
